@@ -346,20 +346,15 @@ if($_POST["txtId"]!="")
 
 	</body>
 	<script type="text/javascript">
-	/*$(document).ready(function(){
+	$(document).ready(function(){
 
 		$('button').on('click', function(event){
 
-			id=  $("button").parent().attr("id");
-			alert(id);
-		});
+			id= $(this).parent().parent().attr('id');
+			tbl = $(this).parent().parent().data('tablename');
+			alert(tbl);
 
-	});*/
-	function del(id,tbl)
-	{
-		
-	$('')
-		var values={
+			var values={
 			id1:id,
 			tblname:tbl
 		}
@@ -383,6 +378,39 @@ if($_POST["txtId"]!="")
 			}
 
 		});
+
+
+		});
+
+	});
+	function del(id,tbl)
+	{
+		
+	/*$
+		var values={
+			id1:id,
+			tblname:tbl
+		}
+		$.ajax({
+
+
+			type:"POST",
+			data:values,
+			dataType:"text",
+			url:tbl+".php",
+			success:function(data){
+				console.log("on success",data);
+				$('#'+id).remove();
+				},
+			complete:function(data){
+				console.log("on complete",data);
+			},
+			error:function(data){
+				console.log("on error",data);
+
+			}
+
+		});*/
 
 	}
 	</script>
