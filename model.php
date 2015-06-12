@@ -1,5 +1,5 @@
   <?php
-class Model{
+class model{
 
 
 public function connect()
@@ -79,25 +79,69 @@ public function save()
  	$conn=$this->connect();
  	$tblname=get_class($this);
  	$query='select * from '.$tblname.' where id='.$id;
- 	$obj1=new $tblname;
- 	$result = mysqli_query($conn, $query); 
+ 	$obj5=new $tblname;
+ 	$result = mysqli_query($conn, $query);
+ 	if($result)
+ 	{ 
  	$row = $result->fetch_assoc();
- 	if($row)
- 	{
-  		foreach($row as $key=>$value)
-  		 {
+ 		if($row)
+ 		{
+  			foreach($row as $key=>$value)
+  		 	{
   		 	
-  		 	$obj1->$key=$value;
+  		 	$obj5->$key=$value;
+  			}
+  			return $obj5;
   		}
-		return $obj1;
+  		else
+  		{
+  		echo "Invalid!!";	
+  		}
+			
+
 	}
 	else
 	{
-
-		echo "Invalid id";
+	echo "Invalid!!";	
+		
 	}
 
  }
-	
+
+ public function load()
+ {
+
+ 	$conn=$this->connect();
+ 	$tblname=get_class($this);
+ 	$query='select * from '.$tblname;
+ 	$ob=new $tblname;
+ 	$result = mysqli_query($conn, $query);
+
+ 	if($result)
+ 	{ 
+ 	return $result;
+	}
+	else
+	{
+	echo "no data";	
+		
+	}
+ }
+
+
+  public function delete($id)
+ {
+
+ 	$conn=$this->connect();
+ 	$tblname=get_class($this);
+ 	$query='delete from '.$tblname.' where id='.$id;
+ 	$result = mysqli_query($conn, $query); 
+	if($result)
+	{
+		echo " successfully deleted";
+	}
+	}
+ 
+  		
 }
 ?>

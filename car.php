@@ -1,6 +1,7 @@
 <?php
-include 'model.php';
-Class car extends Model{
+include_once 'model.php';
+
+Class car extends model{
 	public $brand_name;
 	public $color;
 	public $model;
@@ -41,25 +42,11 @@ Class car extends Model{
 	
 }
 
-$obj=new car ;
-if(isset($_POST["btnSubmit2"]))
+$obj2=new car ;
+$result2=new car;
+if(isset($_POST['id1']))
 {
-$obj->setName($_POST["txtName"]);
-$obj->setColor($_POST["txtColor"]);
-$obj->setModel($_POST["txtModel"]);
-$var=get_class_vars('Person');
-$obj->save() ;
-}
-if(isset($_POST["btnFind2"]))
-{
-$result=new car;
-$result=$obj->find($_POST["txtId"]);
-if($result){
-echo "Name:".$result->getName();
-echo "<br/>";
-echo "Color:".$result->getColor();
-echo "<br/>";
-echo "Model:".$result->getModel();
-}
+	$id=$_POST['id1'];
+	$obj2->delete($id);
 }
 ?>

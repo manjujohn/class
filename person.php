@@ -1,8 +1,8 @@
 
 
 <?php
-include 'model.php';
-Class person extends Model{
+include_once 'model.php';
+Class person extends model{
 	public $name;
 	public $age;
 	public $address;
@@ -41,26 +41,11 @@ Class person extends Model{
 	}
 }
 $obj=new person;
-if(isset($_POST["btnSubmit"]))
-{
-
-$obj->setId($_POST["txtId"]);
-$obj->setName($_POST["txtName"]);
-$obj->setAge($_POST["txtAge"]);
-$obj->setAddress($_POST["txtAddress"]);
-$var=get_class_vars('Person');
-$obj->save() ;
-}
-if(isset($_POST["btnFind"]))
-{
 $result=new person;
-$result=$obj->find($_POST["txtId"]);
-if($result){
-echo "Name:".$result->getName();
-echo "<br/>";
-echo "Age:".$result->getAge();
-echo "<br/>";
-echo "Address:".$result->getAddress();
-}
+
+if(isset($_POST['id1']))
+{
+	$id=$_POST['id1'];
+	$obj->delete($id);
 }
 ?>

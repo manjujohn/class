@@ -1,6 +1,6 @@
 <?php
-include 'model.php';
-Class bird extends Model{
+include_once 'model.php';
+Class bird extends model{
 	public $name;
 	public $color;
 	public $id;
@@ -32,22 +32,11 @@ Class bird extends Model{
 	
 }
 
-$obj=new bird ;
-if(isset($_POST["btnSubmit1"]))
+$obj1=new bird ;
+$result1=new bird;
+if(isset($_POST['id1']))
 {
-$obj->setName($_POST["txtName"]);
-$obj->setColor($_POST["txtColor"]);
-$var=get_class_vars('Person');
-$obj->save() ;
-}
-if(isset($_POST["btnFind1"]))
-{
-$result=new bird;
-$result=$obj->find($_POST["txtId"]);
-if($result){
-echo "Name:".$result->getName();
-echo "<br/>";
-echo "Color:".$result->getColor();
-}
+	$id=$_POST['id1'];
+	$obj1->delete($id);
 }
 ?>
